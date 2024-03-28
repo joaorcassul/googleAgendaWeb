@@ -7,7 +7,8 @@ const TokenPage = () => {
     const [vendedor, setVendedor] = useState('');
 
     const enviarToken = async () => {
-        if (vendedor.trim() === '') {
+        if (vendedor.trim() == '') {
+            alert('teste');
             alert('Informe o vendedor antes de Enviar a permissão.');
             return;
         }
@@ -15,17 +16,17 @@ const TokenPage = () => {
         const codTokens = new URLSearchParams(location.search).get('code');
         const codVend = vendedor;
 
-        // const dados = {
-        //     codVend: '5',
-        //     codTokens: 'asdasbhkxzgvuxgiabk',
-        //   };
-
         try {
-            const response = await axios.post('http://192.168.15.109:3567/login-tokens', {codVend, codTokens});
+            const response = await axios.post('http://localhost:3567/login-tokens', { codVend, codTokens });
 
             if (response.status === 200) {
-                const resposta = await response.json();
-                alert("deu certo!");
+                const resposta = response.data;
+                if (resposta.success) {
+                    alert('Sucesso!');
+                }
+                else {
+                    alert(resposta.message);
+                }
             } else {
                 console.error('Erro ao enviar token:', response.statusText);
             }
@@ -36,7 +37,7 @@ const TokenPage = () => {
 
     return (
         <div>
-            <h1>Página Token</h1>
+            <h1>Gravar</h1>
             <label>
                 Informe o vendedor:
                 <input
