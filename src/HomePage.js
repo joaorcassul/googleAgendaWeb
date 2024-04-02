@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 const HomePage = () => {
 
   const handleSolicitarPermissao = async () => {
@@ -23,7 +21,6 @@ const HomePage = () => {
   const launchUrl = async (url) => {
     try {
       await window.location.replace(url);
-      // await window.location.replace('http://localhost:3000/token?code=4%2F0AeaYSHAKb48iD91CFRkliiwocPecc8Yvhm06eBQOUeSsbEuE9WDzfRZ9XZCNPt3fn9pk9Q&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly');
     } catch (error) {
       console.error('Erro ao abrir a URL:', error);
     }
